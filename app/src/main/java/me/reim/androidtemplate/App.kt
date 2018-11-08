@@ -20,6 +20,10 @@ import com.squareup.leakcanary.LeakCanary
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 import dagger.android.support.DaggerApplication
+import me.reim.androidtemplate.data.di.DataModule
+import me.reim.androidtemplate.di.ApplicationModule
+import me.reim.androidtemplate.infrastructure.di.NetworkModule
+import me.reim.androidtemplate.presentation.ApiActivity
 import timber.log.Timber
 import javax.inject.Singleton
 
@@ -38,7 +42,7 @@ open class App : DaggerApplication() {
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
         return DaggerApp_Component.builder()
-//            .application(this)
+            .applicationModule(ApplicationModule(this))
 //            .networkModule(NetworkModule.instance)
 //            .databaseModule(DatabaseModule.instance)
             .build()
@@ -66,7 +70,11 @@ open class App : DaggerApplication() {
     @Singleton
     @dagger.Component(
         modules = [
-            AndroidSupportInjectionModule::class
+            AndroidSupportInjectionModule::class,
+            ApplicationModule::class,
+            NetworkModule::class,
+            DataModule::class,
+            ApiActivity.Module::class
         ]
     )
     interface Component : AndroidInjector<App>

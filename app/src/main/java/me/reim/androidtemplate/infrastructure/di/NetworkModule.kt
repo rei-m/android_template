@@ -14,8 +14,10 @@
 package me.reim.androidtemplate.infrastructure.di
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoSet
+import me.reim.androidtemplate.infrastructure.network.QiitaApi
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -23,6 +25,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
+@Module
 open class NetworkModule {
     @Singleton
     @Provides
@@ -46,9 +49,15 @@ open class NetworkModule {
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)
-            .baseUrl("https://example.com/")
+            .baseUrl("https://qiita.com/api/v2/")
             .addConverterFactory(MoshiConverterFactory.create())
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .build()
+    }
+
+    @Singleton
+    @Provides
+    open fun provideQiitaApi(retrofit: Retrofit): QiitaApi {
+        return retrofit.create(QiitaApi::class.java)
     }
 }
