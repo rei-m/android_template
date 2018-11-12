@@ -13,8 +13,6 @@
 
 package me.reim.androidtemplate.data.model
 
-import com.squareup.moshi.Json
-
 data class Article(
     val id: String,
     val title: String,

@@ -32,9 +32,13 @@ class ApiViewModel(
     private val _articles: MutableLiveData<List<Article>> = MutableLiveData()
     val articles: LiveData<List<Article>> = _articles
 
+    private val _refreshing: MutableLiveData<Boolean> = MutableLiveData()
+    val refreshing: LiveData<Boolean> = _refreshing
+
     private val job = Job()
 
     init {
+        _refreshing.value = false
         GlobalScope.launch(job + Dispatchers.Main) {
             val articles = articleRepository.fetchArticles("rei-m")
             _articles.postValue(articles)
@@ -42,8 +46,17 @@ class ApiViewModel(
     }
 
     override fun onCleared() {
+        _refreshing.value = false
         job.cancel()
         super.onCleared()
+    }
+
+    fun onRefresh() {
+        GlobalScope.launch(job + Dispatchers.Main) {
+            val articles = articleRepository.fetchArticles("rei-m")
+            _articles.postValue(articles)
+            _refreshing.value = false
+        }
     }
 
     class Factory @Inject constructor(private val articleRepository: ArticleRepository) : ViewModelProvider.Factory {

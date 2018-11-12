@@ -11,22 +11,17 @@
  * the License for the specific language governing permissions and limitations under the License.
  */
 
-package me.reim.androidtemplate.presentation.ui.api.item
+package me.reim.androidtemplate.presentation.helper.bindingadapters
 
-import com.xwray.groupie.databinding.BindableItem
-import me.reim.androidtemplate.R
-import me.reim.androidtemplate.data.model.Article
-import me.reim.androidtemplate.databinding.ItemArticleBinding
+import androidx.databinding.BindingAdapter
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 
-class ArticleItem(
-    private val article: Article
-) : BindableItem<ItemArticleBinding>() {
+@BindingAdapter("onRefresh")
+fun setOnRefresh(view: SwipeRefreshLayout, listener: SwipeRefreshLayout.OnRefreshListener) {
+    view.setOnRefreshListener(listener)
+}
 
-    override fun getLayout() = R.layout.item_article
-
-    override fun bind(viewBinding: ItemArticleBinding, position: Int) {
-        with(viewBinding) {
-            article = this@ArticleItem.article
-        }
-    }
+@BindingAdapter("refreshing")
+fun setRefreshing(view: SwipeRefreshLayout, refreshing: Boolean?) {
+    view.isRefreshing = refreshing == true
 }

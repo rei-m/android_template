@@ -3,8 +3,6 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         tools:context="presentation.ui.api.ApiFragment">
-
-
     <data>
         <variable name="viewModel" type="me.reim.androidtemplate.presentation.ui.api.ApiViewModel"/>
     </data>
@@ -17,7 +15,9 @@
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/api_swipe_refresh"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:refreshing="@{viewModel.refreshing}"
+            app:onRefresh="@{viewModel::onRefresh}">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/api_recycler"
