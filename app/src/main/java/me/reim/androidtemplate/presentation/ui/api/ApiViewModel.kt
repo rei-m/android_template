@@ -17,7 +17,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -26,43 +25,54 @@ import me.reim.androidtemplate.data.repository.ArticleRepository
 import javax.inject.Inject
 
 class ApiViewModel(
+    private val userId: String,
     private val articleRepository: ArticleRepository
 ) : ViewModel() {
 
     private val _articles: MutableLiveData<List<Article>> = MutableLiveData()
-    val articles: LiveData<List<Article>> = _articles
+    val articles: LiveData<List<Article>>
+        get() {
+            _articles.value ?: loadArticles()
+            return _articles
+        }
 
     private val _refreshing: MutableLiveData<Boolean> = MutableLiveData()
     val refreshing: LiveData<Boolean> = _refreshing
 
-    private val job = Job()
+    private var loadArticleJob: Job? = null
 
     init {
         _refreshing.value = false
-        GlobalScope.launch(job + Dispatchers.Main) {
-            val articles = articleRepository.fetchArticles("rei-m")
-            _articles.postValue(articles)
-        }
     }
 
     override fun onCleared() {
         _refreshing.value = false
-        job.cancel()
+        loadArticleJob?.cancel()
         super.onCleared()
     }
 
     fun onRefresh() {
-        GlobalScope.launch(job + Dispatchers.Main) {
-            val articles = articleRepository.fetchArticles("rei-m")
+        loadArticles()
+    }
+
+    private fun loadArticles() {
+        if (loadArticleJob?.isActive == true) {
+            return
+        }
+        loadArticleJob = GlobalScope.launch {
+            val articles = articleRepository.fetchArticles(userId)
             _articles.postValue(articles)
-            _refreshing.value = false
+            _refreshing.postValue(false)
         }
     }
 
     class Factory @Inject constructor(private val articleRepository: ArticleRepository) : ViewModelProvider.Factory {
+
+        var userId: String = ""
+
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            return ApiViewModel(articleRepository) as T
+            return ApiViewModel(userId, articleRepository) as T
         }
     }
 }

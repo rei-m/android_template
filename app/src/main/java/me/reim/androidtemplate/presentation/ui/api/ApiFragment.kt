@@ -44,12 +44,17 @@ class ApiFragment : DaggerFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(requireActivity(), viewModelFactory).get(ApiViewModel::class.java)
+        obtainViewModel()
         with(binding) {
             apiRecycler.adapter = ArticlesAdapter()
             binding.setLifecycleOwner(this@ApiFragment)
             viewModel = this@ApiFragment.viewModel
         }
+    }
+
+    private fun obtainViewModel() {
+        viewModelFactory.userId = "rei-m"
+        viewModel = ViewModelProviders.of(requireActivity(), viewModelFactory).get(ApiViewModel::class.java)
     }
 
     @dagger.Module

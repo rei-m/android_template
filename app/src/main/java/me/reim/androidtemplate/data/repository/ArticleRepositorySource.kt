@@ -18,7 +18,5 @@ import me.reim.androidtemplate.infrastructure.network.QiitaApi
 import javax.inject.Inject
 
 class ArticleRepositorySource @Inject constructor(private val api: QiitaApi) : ArticleRepository {
-    override suspend fun fetchArticles(userName: String): List<Article> {
-        return api.getItems("user:$userName").await()
-    }
+    override suspend fun fetchArticles(userName: String): List<Article> = api.getItems("user:$userName").await()
 }
