@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import me.reim.androidtemplate.databinding.ActivityMainBinding
 import me.reim.androidtemplate.presentation.ApiActivity
+import me.reim.androidtemplate.presentation.MotionActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,9 +33,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        binding.button.setOnClickListener {
+        binding.buttonApiSample.setOnClickListener {
             startActivity(ApiActivity.createIntent(this))
         }
+        binding.buttonMotionSample.setOnClickListener {
+            startActivity(MotionActivity.createIntent(this))
+        }
+
 //        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
 }

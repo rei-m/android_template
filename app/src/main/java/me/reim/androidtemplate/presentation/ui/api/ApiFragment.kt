@@ -18,6 +18,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.RecyclerView
 import dagger.android.ContributesAndroidInjector
 import dagger.android.support.DaggerFragment
 import me.reim.androidtemplate.databinding.ApiFragmentBinding
@@ -47,6 +48,19 @@ class ApiFragment : DaggerFragment() {
         obtainViewModel()
         with(binding) {
             apiRecycler.adapter = ArticlesAdapter()
+            apiRecycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+                    println("onScrolled")
+                    println("${dy}dy")
+                }
+
+                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                    super.onScrollStateChanged(recyclerView, newState)
+                    println("onScrollStateChanged")
+                    println("${newState}newState")
+                }
+            })
             binding.setLifecycleOwner(this@ApiFragment)
             viewModel = this@ApiFragment.viewModel
         }
