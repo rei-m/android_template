@@ -71,5 +71,11 @@ class MotionFragment : Fragment() {
                 .add(R.id.container, SceneFragment.newInstance(R.layout.motion_scene_7_fragment))
                 .commit()
         }
+        view?.findViewById<Button>(R.id.motion_scene_9)?.setOnClickListener {
+            requireFragmentManager()
+                .beginTransaction()
+                .add(R.id.container, SceneFragment.newInstance(R.layout.motion_scene_9_fragment))
+                .commit()
+        }
     }
 }
