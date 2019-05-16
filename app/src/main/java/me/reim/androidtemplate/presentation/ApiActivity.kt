@@ -17,7 +17,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import dagger.Binds
-import dagger.BindsInstance
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerAppCompatActivity
 import dagger.multibindings.ClassKey
@@ -48,13 +47,15 @@ class ApiActivity : DaggerAppCompatActivity() {
     )
     interface Subcomponent : AndroidInjector<ApiActivity> {
         @dagger.Subcomponent.Builder
-        abstract class Builder : AndroidInjector.Builder<ApiActivity>() {
+        abstract class Builder : AndroidInjector.Factory<ApiActivity> {
+            override fun create(instance: ApiActivity): AndroidInjector<ApiActivity> {
+                activityModule(ActivityModule(instance))
+                return build()
+            }
 
             abstract fun activityModule(module: ActivityModule): Builder
 
-            override fun seedInstance(instance: ApiActivity) {
-                activityModule(ActivityModule(instance))
-            }
+            abstract fun build(): AndroidInjector<ApiActivity>
         }
     }
 
