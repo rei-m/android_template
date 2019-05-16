@@ -13,14 +13,14 @@
 
 package me.reim.androidtemplate.presentation
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import dagger.Binds
-import dagger.android.ActivityKey
+import dagger.BindsInstance
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerAppCompatActivity
+import dagger.multibindings.ClassKey
 import dagger.multibindings.IntoMap
 import me.reim.androidtemplate.R
 import me.reim.androidtemplate.presentation.di.ActivityModule
@@ -62,8 +62,8 @@ class ApiActivity : DaggerAppCompatActivity() {
     abstract class Module {
         @Binds
         @IntoMap
-        @ActivityKey(ApiActivity::class)
-        abstract fun bind(builder: Subcomponent.Builder): AndroidInjector.Factory<out Activity>
+        @ClassKey(ApiActivity::class)
+        internal abstract fun bind(factory: Subcomponent.Builder): AndroidInjector.Factory<*>
     }
 
     companion object {
