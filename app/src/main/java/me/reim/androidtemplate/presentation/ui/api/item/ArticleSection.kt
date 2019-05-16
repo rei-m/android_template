@@ -15,7 +15,7 @@ package me.reim.androidtemplate.presentation.ui.api.item
 
 import com.xwray.groupie.Item
 import com.xwray.groupie.Section
-import me.reim.androidtemplate.data.model.Article
+import me.reim.androidtemplate.model.Article
 
 class ArticleSection : Section() {
     fun updateArticles(articles: List<Article>) {

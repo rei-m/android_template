@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018. Rei Matsushita
+ * Copyright (c) 2019. Rei Matsushita
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in
  * compliance with the License. You may obtain a copy of the License at
@@ -11,17 +11,20 @@
  * the License for the specific language governing permissions and limitations under the License.
  */
 
-package me.reim.androidtemplate.presentation.helper.bindingadapters
+package me.reim.androidtemplate.model;
 
-import androidx.databinding.BindingAdapter
-import androidx.recyclerview.widget.RecyclerView
-import me.reim.androidtemplate.model.Article
-import me.reim.androidtemplate.presentation.ui.api.ArticlesAdapter
+import org.junit.Test;
 
-@BindingAdapter("articles")
-fun setArticles(view: RecyclerView, articles: List<Article>?) {
-    articles ?: return
-    with(view.adapter as ArticlesAdapter) {
-        updateArticles(articles)
+import static org.junit.Assert.*;
+
+/**
+ * Example local unit test, which will execute on the development machine (host).
+ *
+ * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
+ */
+public class ExampleUnitTest {
+    @Test
+    public void addition_isCorrect() {
+        assertEquals(4, 2 + 2);
     }
 }

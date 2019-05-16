@@ -13,7 +13,7 @@
 
 package me.reim.androidtemplate.data.repository
 
-import me.reim.androidtemplate.data.model.Article
+import me.reim.androidtemplate.model.Article
 import me.reim.androidtemplate.infrastructure.network.QiitaApi
 import javax.inject.Inject
 

@@ -15,7 +15,7 @@ package me.reim.androidtemplate.presentation.ui.api.item
 
 import com.xwray.groupie.databinding.BindableItem
 import me.reim.androidtemplate.R
-import me.reim.androidtemplate.data.model.Article
+import me.reim.androidtemplate.model.Article
 import me.reim.androidtemplate.databinding.ItemArticleBinding
 
 class ArticleItem(

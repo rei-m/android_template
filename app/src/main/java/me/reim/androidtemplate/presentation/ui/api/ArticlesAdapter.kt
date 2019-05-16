@@ -15,7 +15,7 @@ package me.reim.androidtemplate.presentation.ui.api
 
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
-import me.reim.androidtemplate.data.model.Article
+import me.reim.androidtemplate.model.Article
 import me.reim.androidtemplate.presentation.ui.api.item.ArticleSection
 
 class ArticlesAdapter : GroupAdapter<ViewHolder>() {

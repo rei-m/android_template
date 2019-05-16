@@ -20,7 +20,7 @@ import androidx.lifecycle.ViewModelProvider
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import me.reim.androidtemplate.data.model.Article
+import me.reim.androidtemplate.model.Article
 import me.reim.androidtemplate.data.repository.ArticleRepository
 import javax.inject.Inject
 

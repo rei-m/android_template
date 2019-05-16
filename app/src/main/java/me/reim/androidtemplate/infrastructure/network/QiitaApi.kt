@@ -14,7 +14,7 @@
 package me.reim.androidtemplate.infrastructure.network
 
 import kotlinx.coroutines.Deferred
-import me.reim.androidtemplate.data.model.Article
+import me.reim.androidtemplate.model.Article
 import retrofit2.http.GET
 import retrofit2.http.Query
 
