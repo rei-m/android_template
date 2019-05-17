@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018. Rei Matsushita
+ * Copyright (c) 2019. Rei Matsushita
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in
  * compliance with the License. You may obtain a copy of the License at
@@ -11,12 +11,10 @@
  * the License for the specific language governing permissions and limitations under the License.
  */
 
-package me.reim.androidtemplate.data.repository
+package me.reim.androidtemplate.model
 
 import me.reim.androidtemplate.model.Article
-import me.reim.androidtemplate.infrastructure.network.QiitaApi
-import javax.inject.Inject
 
-class ArticleRepositorySource @Inject constructor(private val api: QiitaApi) : ArticleRepository {
-    override suspend fun fetchArticles(userName: String): List<Article> = api.getItems("user:$userName").await()
+interface ArticleRepository {
+    suspend fun fetchArticles(userName: String): List<Article>
 }

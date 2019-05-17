@@ -48,10 +48,8 @@ class ApiActivity : DaggerAppCompatActivity() {
     interface Subcomponent : AndroidInjector<ApiActivity> {
         @dagger.Subcomponent.Builder
         abstract class Builder : AndroidInjector.Factory<ApiActivity> {
-            override fun create(instance: ApiActivity): AndroidInjector<ApiActivity> {
-                activityModule(ActivityModule(instance))
-                return build()
-            }
+            override fun create(instance: ApiActivity): AndroidInjector<ApiActivity> =
+                activityModule(ActivityModule(instance)).build()
 
             abstract fun activityModule(module: ActivityModule): Builder
 
