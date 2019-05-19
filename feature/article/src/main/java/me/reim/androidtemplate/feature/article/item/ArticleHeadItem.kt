@@ -11,12 +11,12 @@
  * the License for the specific language governing permissions and limitations under the License.
  */
 
-package me.reim.androidtemplate.presentation.ui.api.item
+package me.reim.androidtemplate.feature.article.item
 
 import com.xwray.groupie.Item
 import com.xwray.groupie.databinding.BindableItem
-import me.reim.androidtemplate.R
-import me.reim.androidtemplate.databinding.ItemArticleHeaderBinding
+import me.reim.androidtemplate.feature.article.R
+import me.reim.androidtemplate.feature.article.databinding.ItemArticleHeaderBinding
 
 class ArticleHeadItem : BindableItem<ItemArticleHeaderBinding>() {
     override fun getLayout() = R.layout.item_article_header

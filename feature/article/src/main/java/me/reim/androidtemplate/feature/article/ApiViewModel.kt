@@ -11,7 +11,7 @@
  * the License for the specific language governing permissions and limitations under the License.
  */
 
-package me.reim.androidtemplate.presentation.ui.api
+package me.reim.androidtemplate.feature.article
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

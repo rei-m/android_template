@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018. Rei Matsushita
+ * Copyright (c) 2019. Rei Matsushita
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in
  * compliance with the License. You may obtain a copy of the License at
@@ -11,22 +11,17 @@
  * the License for the specific language governing permissions and limitations under the License.
  */
 
-package me.reim.androidtemplate.presentation.ui.api.item
+package me.reim.androidtemplate.feature.article.bindingadapters
 
-import com.xwray.groupie.databinding.BindableItem
-import me.reim.androidtemplate.R
+import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.RecyclerView
+import me.reim.androidtemplate.feature.article.ArticlesAdapter
 import me.reim.androidtemplate.model.Article
-import me.reim.androidtemplate.databinding.ItemArticleBinding
 
-class ArticleItem(
-    private val article: Article
-) : BindableItem<ItemArticleBinding>() {
-
-    override fun getLayout() = R.layout.item_article
-
-    override fun bind(viewBinding: ItemArticleBinding, position: Int) {
-        with(viewBinding) {
-            article = this@ArticleItem.article
-        }
+@BindingAdapter("articles")
+fun setArticles(view: RecyclerView, articles: List<Article>?) {
+    articles ?: return
+    with(view.adapter as ArticlesAdapter) {
+        updateArticles(articles)
     }
 }

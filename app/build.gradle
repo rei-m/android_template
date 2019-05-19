@@ -83,6 +83,7 @@ dependencies {
     implementation project(":model")
     implementation project(":core")
     implementation project(':feature:common')
+    implementation project(':feature:article')
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"

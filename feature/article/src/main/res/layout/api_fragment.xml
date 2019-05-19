@@ -2,9 +2,9 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        tools:context="presentation.ui.api.ApiFragment">
+        tools:context=".ApiFragment">
     <data>
-        <variable name="viewModel" type="me.reim.androidtemplate.presentation.ui.api.ApiViewModel"/>
+        <variable name="viewModel" type="me.reim.androidtemplate.feature.article.ApiViewModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

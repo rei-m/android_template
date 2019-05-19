@@ -11,17 +11,22 @@
  * the License for the specific language governing permissions and limitations under the License.
  */
 
-package me.reim.androidtemplate.presentation.ui.api.item
+package me.reim.androidtemplate.feature.article.item
 
-import com.xwray.groupie.Item
-import com.xwray.groupie.Section
+import com.xwray.groupie.databinding.BindableItem
+import me.reim.androidtemplate.feature.article.R
+import me.reim.androidtemplate.feature.article.databinding.ItemArticleBinding
 import me.reim.androidtemplate.model.Article
 
-class ArticleSection : Section() {
-    fun updateArticles(articles: List<Article>) {
-        val header = ArticleHeadItem()
-        val list = mutableListOf<Item<*>>(header)
-        list.addAll(articles.map(::ArticleItem))
-        update(list)
+class ArticleItem(
+    private val article: Article
+) : BindableItem<ItemArticleBinding>() {
+
+    override fun getLayout() = R.layout.item_article
+
+    override fun bind(viewBinding: ItemArticleBinding, position: Int) {
+        with(viewBinding) {
+            article = this@ArticleItem.article
+        }
     }
 }

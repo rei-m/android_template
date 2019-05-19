@@ -11,12 +11,12 @@
  * the License for the specific language governing permissions and limitations under the License.
  */
 
-package me.reim.androidtemplate.presentation.ui.api
+package me.reim.androidtemplate.feature.article
 
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
+import me.reim.androidtemplate.feature.article.item.ArticleSection
 import me.reim.androidtemplate.model.Article
-import me.reim.androidtemplate.presentation.ui.api.item.ArticleSection
 
 class ArticlesAdapter : GroupAdapter<ViewHolder>() {
 

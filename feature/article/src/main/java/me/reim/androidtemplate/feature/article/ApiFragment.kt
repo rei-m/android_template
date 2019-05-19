@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018. Rei Matsushita
+ * Copyright (c) 2019. Rei Matsushita
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in
  * compliance with the License. You may obtain a copy of the License at
@@ -11,7 +11,7 @@
  * the License for the specific language governing permissions and limitations under the License.
  */
 
-package me.reim.androidtemplate.presentation.ui.api
+package me.reim.androidtemplate.feature.article
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -21,7 +21,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import dagger.android.ContributesAndroidInjector
 import dagger.android.support.DaggerFragment
-import me.reim.androidtemplate.databinding.ApiFragmentBinding
+import me.reim.androidtemplate.feature.article.databinding.ApiFragmentBinding
 import me.reim.androidtemplate.feature.common.di.ForFragment
 import javax.inject.Inject
 

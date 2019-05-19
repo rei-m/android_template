@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import me.reim.androidtemplate.databinding.ActivityMainBinding
-import me.reim.androidtemplate.presentation.ApiActivity
+import me.reim.androidtemplate.feature.article.ApiActivity
 import me.reim.androidtemplate.presentation.MotionActivity
 
 class MainActivity : AppCompatActivity() {

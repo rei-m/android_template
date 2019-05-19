@@ -11,17 +11,17 @@
  * the License for the specific language governing permissions and limitations under the License.
  */
 
-package me.reim.androidtemplate.presentation.helper.bindingadapters
+package me.reim.androidtemplate.feature.article.item
 
-import androidx.databinding.BindingAdapter
-import androidx.recyclerview.widget.RecyclerView
+import com.xwray.groupie.Item
+import com.xwray.groupie.Section
 import me.reim.androidtemplate.model.Article
-import me.reim.androidtemplate.presentation.ui.api.ArticlesAdapter
 
-@BindingAdapter("articles")
-fun setArticles(view: RecyclerView, articles: List<Article>?) {
-    articles ?: return
-    with(view.adapter as ArticlesAdapter) {
-        updateArticles(articles)
+class ArticleSection : Section() {
+    fun updateArticles(articles: List<Article>) {
+        val header = ArticleHeadItem()
+        val list = mutableListOf<Item<*>>(header)
+        list.addAll(articles.map(::ArticleItem))
+        update(list)
     }
 }
