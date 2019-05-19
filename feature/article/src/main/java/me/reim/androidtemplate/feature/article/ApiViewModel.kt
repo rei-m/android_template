@@ -17,17 +17,24 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import me.reim.androidtemplate.model.Article
 import me.reim.androidtemplate.model.ArticleRepository
 import javax.inject.Inject
+import kotlin.coroutines.CoroutineContext
 
 class ApiViewModel(
     private val userId: String,
     private val articleRepository: ArticleRepository
-) : ViewModel() {
+) : ViewModel(), CoroutineScope {
+
+    private val job: Job = Job()
+
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Main + job
 
     private val _articles: MutableLiveData<List<Article>> = MutableLiveData()
     val articles: LiveData<List<Article>>
@@ -39,15 +46,13 @@ class ApiViewModel(
     private val _refreshing: MutableLiveData<Boolean> = MutableLiveData()
     val refreshing: LiveData<Boolean> = _refreshing
 
-    private var loadArticleJob: Job? = null
-
     init {
         _refreshing.value = false
     }
 
     override fun onCleared() {
         _refreshing.value = false
-        loadArticleJob?.cancel()
+        job.cancel()
         super.onCleared()
     }
 
@@ -56,10 +61,7 @@ class ApiViewModel(
     }
 
     private fun loadArticles() {
-        if (loadArticleJob?.isActive == true) {
-            return
-        }
-        loadArticleJob = GlobalScope.launch {
+        launch {
             val articles = articleRepository.fetchArticles(userId)
             _articles.postValue(articles)
             _refreshing.postValue(false)

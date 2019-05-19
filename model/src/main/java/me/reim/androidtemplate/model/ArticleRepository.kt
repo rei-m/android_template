@@ -13,8 +13,6 @@
 
 package me.reim.androidtemplate.model
 
-import me.reim.androidtemplate.model.Article
-
 interface ArticleRepository {
     suspend fun fetchArticles(userName: String): List<Article>
 }
