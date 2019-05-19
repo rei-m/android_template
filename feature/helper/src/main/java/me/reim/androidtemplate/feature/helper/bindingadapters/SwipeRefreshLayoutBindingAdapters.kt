@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018. Rei Matsushita
+ * Copyright (c) 2019. Rei Matsushita
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in
  * compliance with the License. You may obtain a copy of the License at
@@ -11,10 +11,17 @@
  * the License for the specific language governing permissions and limitations under the License.
  */
 
-package me.reim.androidtemplate.presentation.helper
+package me.reim.androidtemplate.feature.helper.bindingadapters
 
-import com.bumptech.glide.annotation.GlideModule
-import com.bumptech.glide.module.AppGlideModule
+import androidx.databinding.BindingAdapter
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 
-@GlideModule
-class MyAppGlideModule : AppGlideModule()
+@BindingAdapter("onRefresh")
+fun setOnRefresh(view: SwipeRefreshLayout, listener: SwipeRefreshLayout.OnRefreshListener) {
+    view.setOnRefreshListener(listener)
+}
+
+@BindingAdapter("refreshing")
+fun setRefreshing(view: SwipeRefreshLayout, refreshing: Boolean?) {
+    view.isRefreshing = refreshing == true
+}

@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/feature" />
             <option value="$PROJECT_DIR$/feature/article" />
+            <option value="$PROJECT_DIR$/feature/helper" />
             <option value="$PROJECT_DIR$/model" />
           </set>
         </option>
