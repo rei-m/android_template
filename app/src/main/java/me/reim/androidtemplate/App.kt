@@ -20,10 +20,10 @@ import com.squareup.leakcanary.LeakCanary
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 import dagger.android.support.DaggerApplication
-import me.reim.androidtemplate.data.di.DataModule
+import me.reim.androidtemplate.core.data.di.DataModule
+import me.reim.androidtemplate.core.infrastructure.di.NetworkModule
 import me.reim.androidtemplate.di.ApplicationModule
-import me.reim.androidtemplate.infrastructure.di.NetworkModule
-import me.reim.androidtemplate.presentation.ApiActivity
+import me.reim.androidtemplate.feature.article.ApiActivity
 import timber.log.Timber
 import javax.inject.Singleton
 
