@@ -82,7 +82,7 @@ android {
 dependencies {
     implementation project(":model")
     implementation project(":core")
-    implementation project(":feature:helper")
+    implementation project(':feature:common')
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"

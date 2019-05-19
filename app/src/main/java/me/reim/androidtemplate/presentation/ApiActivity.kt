@@ -22,8 +22,8 @@ import dagger.android.support.DaggerAppCompatActivity
 import dagger.multibindings.ClassKey
 import dagger.multibindings.IntoMap
 import me.reim.androidtemplate.R
-import me.reim.androidtemplate.presentation.di.ActivityModule
-import me.reim.androidtemplate.presentation.di.ForActivity
+import me.reim.androidtemplate.feature.common.di.ActivityModule
+import me.reim.androidtemplate.feature.common.di.ForActivity
 import me.reim.androidtemplate.presentation.ui.api.ApiFragment
 
 class ApiActivity : DaggerAppCompatActivity() {

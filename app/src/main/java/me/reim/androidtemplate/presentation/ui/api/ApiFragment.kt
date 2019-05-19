@@ -22,7 +22,7 @@ import androidx.recyclerview.widget.RecyclerView
 import dagger.android.ContributesAndroidInjector
 import dagger.android.support.DaggerFragment
 import me.reim.androidtemplate.databinding.ApiFragmentBinding
-import me.reim.androidtemplate.presentation.di.ForFragment
+import me.reim.androidtemplate.feature.common.di.ForFragment
 import javax.inject.Inject
 
 class ApiFragment : DaggerFragment() {
