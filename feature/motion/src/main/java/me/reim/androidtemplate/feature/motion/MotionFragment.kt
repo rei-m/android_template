@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018. Rei Matsushita
+ * Copyright (c) 2019. Rei Matsushita
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in
  * compliance with the License. You may obtain a copy of the License at
@@ -11,7 +11,7 @@
  * the License for the specific language governing permissions and limitations under the License.
  */
 
-package me.reim.androidtemplate.presentation.ui.motion
+package me.reim.androidtemplate.feature.motion
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -20,7 +20,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import me.reim.androidtemplate.R
 
 class MotionFragment : Fragment() {
 
