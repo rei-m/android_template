@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".feature.article.ApiActivity"></activity>
-        <activity android:name=".presentation.MotionActivity"></activity>
+        <activity android:name=".feature.motion.MotionActivity"></activity>
     </application>
 
 </manifest>
